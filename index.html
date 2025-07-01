@@ -72,31 +72,6 @@
             display: flex;
         }
         
-        .one-line-art {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 150px;
-            height: 150px;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animate-in {
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        
         nav a {
             color: white;
             text-decoration: none;
@@ -206,12 +181,16 @@
         li {
             margin-bottom: 0.5rem;
         }
-        
-        .highlight {
-            background-color: rgba(52, 152, 219, 0.2);
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-weight: bold;
+
+        .profile-pic {
+            float: left;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            margin-bottom: 0.5rem;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         .concept-box {
@@ -299,12 +278,9 @@
             margin-bottom: 0.8rem;
         }
         
-        .node, .edge {
-            display: none;
-        }
-        
         .network-diagram {
-            height: 500px;
+            height: auto;
+            min-height: 300px;
             background-color: var(--light);
             margin: 2rem 0;
             border-radius: 12px;
@@ -313,6 +289,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 1rem;
         }
         
         .network-diagram svg {
@@ -341,30 +318,6 @@
             z-index: 1000;
         }
         
-        @media (max-width: 768px) {
-            .controls {
-                flex-direction: column;
-                gap: 0.5rem;
-                bottom: 1rem;
-                right: 1rem;
-            }
-            
-            button {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-        
-        @keyframes buttonGlow {
-            0% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
-            50% { box-shadow: 0 4px 20px rgba(112, 111, 211, 0.5); }
-            100% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
-        }
-        
-        .controls button:hover {
-            animation: buttonGlow 2s infinite ease-in-out;
-        }
-        
         button {
             background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
             color: white;
@@ -382,25 +335,9 @@
             letter-spacing: 0.5px;
         }
         
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(to right, var(--gradient-end), var(--gradient-start));
-            transition: width 0.4s ease;
-            z-index: -1;
-        }
-        
         button:hover {
             box-shadow: 0 7px 20px rgba(112, 111, 211, 0.4);
             transform: translateY(-2px);
-        }
-        
-        button:hover::before {
-            width: 100%;
         }
         
         .glossary-panel {
@@ -453,39 +390,8 @@
             align-items: flex-start;
             margin-bottom: 2rem;
             padding: 1rem;
-            border-radius: 12px;
-            background-color: rgba(255, 255, 255, 0.7);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
-        
-        .key-point:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
-        }
-        
-        .key-point-number {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 1.5rem;
-            flex-shrink: 0;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-            position: relative;
-            z-index: 1;
-            transition: transform 0.3s ease;
-        }
-        
-        .key-point:hover .key-point-number {
-            transform: scale(1.1) rotate(10deg);
-        }
-        
+
         .key-point-content {
             flex-grow: 1;
         }
@@ -493,35 +399,6 @@
         .key-point-content p {
             margin: 0;
             line-height: 1.7;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 1100;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 800px;
-            width: 80%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .close-modal {
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
         }
         
         .progress-bar {
@@ -532,7 +409,6 @@
             background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
             transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 2000;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
         }
         
         .presenter-notes {
@@ -558,14 +434,10 @@
             color: white;
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
         }
         
         .presenter-notes p {
             font-size: 1.1rem;
-            line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -575,36 +447,19 @@
                 flex-direction: column;
                 padding: 1rem;
             }
-            
             nav {
                 margin-top: 1rem;
                 width: 100%;
                 justify-content: space-around;
             }
-            
-            nav a {
-                margin: 0;
-            }
-            
-            main {
-                padding: 8rem 1rem 1rem;
-            }
-            
-            section {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .network-diagram {
-                height: 300px;
-            }
+            nav a { margin: 0; }
+            main { padding: 8rem 1rem 1rem; }
+            section { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .network-diagram { height: auto; }
+            .controls { flex-direction: column; gap: 0.5rem; bottom: 1rem; right: 1rem; }
+            button { padding: 0.5rem 1rem; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -631,6 +486,7 @@
             </div>
             
             <h2>Über Roger Häußling</h2>
+             <img src="https://www.soziologie.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaabczhrwg&w2=1080&h2=1080&q=75" alt="Foto von Roger Häußling" class="profile-pic">
             <p>Roger Häußling ist Professor für Soziologie an der RWTH Aachen und ein bedeutender Vertreter der deutschen Techniksoziologie. Seine Forschungsschwerpunkte umfassen:</p>
             <ul>
                 <li>Relationale Soziologie und Netzwerktheorie</li>
