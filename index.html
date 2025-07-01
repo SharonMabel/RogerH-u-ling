@@ -13,8 +13,6 @@
             --dark: #474787;
             --success: #33d9b2;
             --text: #2c2c54;
-            --gradient-start: #ff6b6b;
-            --gradient-end: #706fd3;
         }
         
         * {
@@ -30,7 +28,7 @@
             background-color: var(--light);
             overflow-x: hidden;
             scroll-behavior: smooth;
-            scroll-padding-top: 5rem; /* Fix for scrolling positioning */
+            scroll-padding-top: 5rem;
         }
         
         header {
@@ -46,31 +44,9 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            z-index: 2;
-        }
+        .logo { font-size: 1.5rem; font-weight: bold; }
         
-        .logo::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: white;
-            z-index: -1;
-            filter: blur(4px);
-            opacity: 0.5;
-        }
-        
-        nav {
-            display: flex;
-        }
+        nav { display: flex; }
         
         nav a {
             color: white;
@@ -80,27 +56,22 @@
             border-radius: 4px;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
         
         nav a::before {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            background: var(--primary);
             transition: width 0.3s ease;
         }
         
         nav a:hover::before, nav a.active::before {
             width: 100%;
-        }
-        
-        nav a:hover, nav a.active {
-            background-color: rgba(112, 111, 211, 0.2);
-            transform: translateY(-2px);
         }
         
         main {
@@ -113,26 +84,6 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
         }
         
         h1, h2, h3 {
@@ -140,52 +91,17 @@
             margin-bottom: 1rem;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
+        h1 { font-size: 2.5rem; border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 0.5rem; }
+        h2 { font-size: 1.8rem; padding-left: 1rem; border-left: 4px solid var(--accent); margin-top: 2rem; }
         
-        h1::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            width: 100%;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--accent);
-            margin-top: 2rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        ul, ol {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
+        p { margin-bottom: 1rem; }
+        ul, ol { margin-left: 2rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
 
         .profile-pic {
             float: left;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             margin-right: 1.5rem;
             margin-bottom: 0.5rem;
@@ -195,56 +111,10 @@
         
         .concept-box {
             background-color: var(--light);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 1.5rem;
             margin: 1.5rem 0;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .concept-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-        
-        .concept-box::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
-        }
-        
-        .concept-box h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-        }
-        
-        .quote {
-            font-style: italic;
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
-            background-color: rgba(112, 111, 211, 0.05);
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        .quote::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 5rem;
-            color: rgba(112, 111, 211, 0.2);
-            font-family: Georgia, serif;
-            line-height: 0.8;
+            border-left: 4px solid var(--primary);
         }
         
         .example {
@@ -252,36 +122,14 @@
             border-radius: 12px;
             padding: 1.5rem;
             margin: 1.5rem 0;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--success);
         }
         
-        .example:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-        
-        .example::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--success), #6ab04c);
-        }
-        
-        .example h3 {
-            color: var(--success);
-            margin-bottom: 0.8rem;
-        }
+        .example h3 { color: var(--success); }
         
         .network-diagram {
-            height: auto;
-            min-height: 300px;
-            background-color: var(--light);
+            height: 500px;
+            background-color: #fdfaf5;
             margin: 2rem 0;
             border-radius: 12px;
             display: flex;
@@ -289,26 +137,104 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding: 1rem;
         }
+        .network-diagram svg { width: 100%; height: 100%; }
+        .concept-node { cursor: pointer; transition: transform 0.3s ease; }
+        .concept-node:hover { transform: scale(1.1); }
+        .concept-node text { pointer-events: none; }
         
-        .network-diagram svg {
+        .analysis-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            perspective: 1000px;
+        }
+        .analysis-card {
+            background-color: transparent;
+            min-height: 220px;
+            border-radius: 12px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+        .analysis-card.is-flipped { transform: rotateY(180deg); }
+        .card-face {
+            position: absolute;
             width: 100%;
             height: 100%;
+            backface-visibility: hidden;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        
-        .concept-node {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .card-front {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: white;
+            text-align: center;
         }
-        
-        .concept-node:hover {
-            transform: scale(1.1);
+        .card-front h3 { color: white; font-size: 1.5rem; }
+        .card-back {
+            background: var(--light);
+            transform: rotateY(180deg);
         }
+        .card-back p { font-size: 0.95rem; line-height: 1.5; margin: 0; }
         
-        .concept-node text {
-            pointer-events: none;
+        .scallop-container { background-color: #fffaf0; padding: 2rem; border-radius: 8px; }
+        .scallop-problem { display: flex; align-items: center; margin-bottom: 1.5rem; }
+        .scallop-icon {
+    font-size: 3rem; /* Größe des Emojis anpassen */
+    width: 60px;     /* Behält die Breite für das Layout bei */
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    text-align: center; /* Zentriert das Emoji im Container */
+}
+        .scallop-text { opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; transform: translateY(10px); }
+        .scallop-text.visible { opacity: 1; transform: translateY(0); }
+        .reveal-buttons { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+
+        .toggle-heading {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--light);
+            border-radius: 8px;
+            transition: background-color 0.3s;
         }
+        .toggle-heading:hover { background-color: #e8e0d4; }
+        .toggle-heading::after { content: '▼'; transition: transform 0.3s ease; }
+        .toggle-heading.open::after { transform: rotate(180deg); }
         
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            margin: 2rem 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
         .controls {
             position: fixed;
             bottom: 2rem;
@@ -318,8 +244,8 @@
             z-index: 1000;
         }
         
-        button {
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        button, .button {
+            background: var(--secondary);
             color: white;
             border: none;
             padding: 0.7rem 1.2rem;
@@ -327,78 +253,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            letter-spacing: 0.5px;
         }
         
-        button:hover {
-            box-shadow: 0 7px 20px rgba(112, 111, 211, 0.4);
+        button:hover, .button:hover {
+            background: var(--primary);
             transform: translateY(-2px);
-        }
-        
-        .glossary-panel {
-            position: fixed;
-            right: -350px;
-            top: 0;
-            width: 350px;
-            height: 100vh;
-            background-color: white;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            padding: 2rem;
-            padding-top: 6rem;
-            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 900;
-            overflow-y: auto;
-        }
-        
-        .glossary-panel.open {
-            right: 0;
-        }
-        
-        .glossary-close {
-            position: absolute;
-            top: 6.5rem;
-            right: 2rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .glossary-close:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-        
-        .glossary-item {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--light);
-            padding-bottom: 1rem;
-        }
-        
-        .glossary-term {
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .key-point {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            padding: 1rem;
-        }
-
-        .key-point-content {
-            flex-grow: 1;
-        }
-        
-        .key-point-content p {
-            margin: 0;
-            line-height: 1.7;
         }
         
         .progress-bar {
@@ -406,66 +265,15 @@
             bottom: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            background: var(--primary);
+            transition: width 0.3s ease;
             z-index: 2000;
-        }
-        
-        .presenter-notes {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(135deg, rgba(44, 44, 84, 0.92), rgba(71, 71, 135, 0.92));
-            color: white;
-            padding: 1.2rem;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 1500;
-            border-top: 2px solid rgba(255, 107, 107, 0.5);
-        }
-        
-        .presenter-notes.show {
-            transform: translateY(0);
-        }
-        
-        .presenter-notes h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .presenter-notes p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-            }
-            nav {
-                margin-top: 1rem;
-                width: 100%;
-                justify-content: space-around;
-            }
-            nav a { margin: 0; }
-            main { padding: 8rem 1rem 1rem; }
-            section { padding: 1rem; }
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            .network-diagram { height: auto; }
-            .controls { flex-direction: column; gap: 0.5rem; bottom: 1rem; right: 1rem; }
-            button { padding: 0.5rem 1rem; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo" data-text="Techniksoziologie">Techniksoziologie</div>
+        <div class="logo">Techniksoziologie</div>
         <nav>
             <a href="#intro" class="active">Einführung</a>
             <a href="#concepts">Schlüsselkonzepte</a>
@@ -476,32 +284,29 @@
     </header>
     
     <main>
-        <section id="intro" class="visible">
+        <section id="intro">
             <h1>Techniksoziologie nach Roger Häußling</h1>
-            <span>Techniksoziologie (Häußling, 2014)</span>
-            
             <div class="concept-box">
                 <h3>Was ist Techniksoziologie?</h3>
                 <p>Die Techniksoziologie untersucht das komplexe Verhältnis zwischen Technik und Gesellschaft. Sie betrachtet, wie technische Artefakte und Systeme in soziale Beziehungen und Strukturen eingebettet sind und diese prägen – und umgekehrt, wie gesellschaftliche Faktoren die Entwicklung und Nutzung von Technik beeinflussen.</p>
             </div>
             
             <h2>Über Roger Häußling</h2>
-             <img src="https://www.soziologie.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaabczhrwg&w2=1080&h2=1080&q=75" alt="Foto von Roger Häußling" class="profile-pic">
+            <img src="https://www.soziologie.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaabczhrwg&w2=1080&h2=1080&q=75" alt="Foto von Roger Häußling" class="profile-pic">
             <p>Roger Häußling ist Professor für Soziologie an der RWTH Aachen und ein bedeutender Vertreter der deutschen Techniksoziologie. Seine Forschungsschwerpunkte umfassen:</p>
             <ul>
                 <li>Relationale Soziologie und Netzwerktheorie</li>
                 <li>Techniksoziologie</li>
                 <li>Qualitative und quantitative Netzwerkanalyse</li>
-                <li>Methodenentwicklung</li>
             </ul>
-            
-            <h2>Ziel dieses Referats</h2>
-            <p>Diese Präsentation analysiert den techniksoziologischen Ansatz anhand des Kapitels zur Akteur-Netzwerk-Theorie aus "Techniksoziologie" (Häußling, 2014) und arbeitet die zentralen Argumente, methodischen Zugänge und die Bedeutung für das soziologische Verständnis von Technik heraus.</p>
+
+            <h2 style="clear: both;">Ziel dieses Referats</h2>
+            <p>Diese Präsentation analysiert den techniksoziologischen Ansatz anhand des Kapitels zur <strong>Akteur-Netzwerk-Theorie (ANT)</strong>. Wir arbeiten die zentralen Argumente, methodischen Zugänge und die Bedeutung für das soziologische Verständnis von Technik heraus.</p>
         </section>
         
         <section id="concepts">
             <h1>Schlüsselkonzepte</h1>
-            
+            <p>Klicken Sie auf die Knoten, um die Erklärungen zu den zentralen Konzepten der relationalen Techniksoziologie und der ANT zu sehen.</p>
             <div class="network-diagram">
                 <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -515,334 +320,227 @@
                     <path d="M 400,300 L 300,450" stroke="rgba(112, 111, 211, 0.4)" stroke-width="2" fill="none"/>
                     <path d="M 400,300 L 500,450" stroke="rgba(112, 111, 211, 0.4)" stroke-width="2" fill="none"/>
                     <path d="M 200,300 L 300,450" stroke="rgba(112, 111, 211, 0.2)" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
-                    <path d="M 200,300 L 500,450" stroke="rgba(112, 111, 211, 0.2)" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
-                    <path d="M 600,300 L 300,450" stroke="rgba(112, 111, 211, 0.2)" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
-                    <path d="M 600,300 L 500,450" stroke="rgba(112, 111, 211, 0.2)" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
-                    <path d="M 300,450 L 500,450" stroke="rgba(112, 111, 211, 0.2)" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
-                    <g class="concept-node" onclick="showConcept('relationality')" cursor="pointer">
+                    <g class="concept-node" onclick="showConcept('relationality')">
                         <circle cx="400" cy="150" r="60" fill="url(#gradientHuman)" filter="url(#shadow)" />
                         <text x="400" y="150" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Relationalität</text>
                     </g>
-                    <g class="concept-node" onclick="showConcept('agency')" cursor="pointer">
+                    <g class="concept-node" onclick="showConcept('agency')">
                         <circle cx="200" cy="300" r="60" fill="url(#gradientTech)" filter="url(#shadow)" />
                         <text x="200" y="290" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Handlungs-</text>
                         <text x="200" y="310" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">trägerschaft</text>
                     </g>
-                    <g class="concept-node" onclick="showConcept('socio-technical')" cursor="pointer">
+                    <g class="concept-node" onclick="showConcept('socio-technical')">
                         <circle cx="600" cy="300" r="60" fill="url(#gradientTech)" filter="url(#shadow)" />
                         <text x="600" y="290" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Soziotechnische</text>
                         <text x="600" y="310" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Netzwerke</text>
                     </g>
-                    <g class="concept-node" onclick="showConcept('technization')" cursor="pointer">
+                    <g class="concept-node" onclick="showConcept('technization')">
                         <circle cx="300" cy="450" r="60" fill="url(#gradientHuman)" filter="url(#shadow)" />
                         <text x="300" y="450" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Technisierung</text>
                     </g>
-                    <g class="concept-node" onclick="showConcept('actor-network')" cursor="pointer">
+                    <g class="concept-node" onclick="showConcept('actor-network')">
                         <circle cx="500" cy="450" r="60" fill="url(#gradientMixed)" filter="url(#shadow)" />
                         <text x="500" y="440" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Akteur-</text>
                         <text x="500" y="460" text-anchor="middle" dominant-baseline="middle" fill="white" font-weight="bold" font-size="16">Netzwerk</text>
                     </g>
                 </svg>
             </div>
-            
-            <div class="concept-box" id="concept-relationality">
-                <h3>Relationalität</h3>
-                <p>Soziale Phänomene werden nicht als Eigenschaften isolierter Akteure, sondern als Ergebnisse von Beziehungen zwischen ihnen verstanden. Technik ist ein integraler Teil dieses Beziehungsgeflechts.</p>
-            </div>
-            <div class="concept-box" id="concept-socio-technical" style="display: none;">
-                <h3>Soziotechnische Netzwerke</h3>
-                <p>Technische und menschliche Akteure bilden gemeinsam Netzwerke, in denen sie sich gegenseitig beeinflussen und konstituieren. Die klare Trennung zwischen "dem Sozialen" und "dem Technischen" wird aufgehoben.</p>
-            </div>
-            <div class="concept-box" id="concept-actor-network" style="display: none;">
-                <h3>Akteur-Netzwerk-Theorie</h3>
-                <p>In Anlehnung an die ANT werden technische Artefakte als "Aktanten" betrachtet, die in sozialen Netzwerken eine aktive Rolle einnehmen. Sie können Handlungen vermitteln, ermöglichen oder verhindern.</p>
-            </div>
-            <div class="concept-box" id="concept-technization" style="display: none;">
-                <h3>Technisierung sozialer Beziehungen</h3>
-                <p>Ein zentraler Analysepunkt ist, wie technische Artefakte und Systeme soziale Beziehungen und Interaktionen vermitteln, verändern und teilweise neu konstituieren.</p>
-            </div>
-            <div class="concept-box" id="concept-agency" style="display: none;">
-                <h3>Handlungsträgerschaft</h3>
-                <p>Das klassische soziologische Verständnis von Handlung wird erweitert, indem technischen Artefakten eine Form von Handlungsträgerschaft ("Agency") zugeschrieben wird. Handeln ist keine rein menschliche Fähigkeit, sondern ein Phänomen, das aus der Verbindung der Aktanten im Netzwerk entsteht.</p>
-            </div>
+            <div class="concept-box" id="concept-relationality" style="display:none;"><h3>Relationalität</h3><p>Soziale Phänomene werden nicht als Eigenschaften isolierter Akteure, sondern als Ergebnisse von Beziehungen zwischen ihnen verstanden. Technik ist ein integraler Teil dieses Beziehungsgeflechts.</p></div>
+            <div class="concept-box" id="concept-socio-technical" style="display: none;"><h3>Soziotechnische Netzwerke</h3><p>Technische und menschliche Akteure bilden gemeinsam Netzwerke, in denen sie sich gegenseitig beeinflussen und konstituieren. Die klare Trennung zwischen "dem Sozialen" und "dem Technischen" wird aufgehoben.</p></div>
+            <div class="concept-box" id="concept-actor-network" style="display: none;"><h3>Akteur-Netzwerk-Theorie</h3><p>In Anlehnung an die ANT werden technische Artefakte als "Aktanten" betrachtet, die in sozialen Netzwerken eine aktive Rolle einnehmen. Sie können Handlungen vermitteln, ermöglichen oder verhindern.</p></div>
+            <div class="concept-box" id="concept-technization" style="display: none;"><h3>Technisierung sozialer Beziehungen</h3><p>Ein zentraler Analysepunkt ist, wie technische Artefakte und Systeme soziale Beziehungen und Interaktionen vermitteln, verändern und teilweise neu konstituieren.</p></div>
+            <div class="concept-box" id="concept-agency" style="display: none;"><h3>Handlungsträgerschaft</h3><p>Das klassische soziologische Verständnis von Handlung wird erweitert, indem technischen Artefakten eine Form von Handlungsträgerschaft ("Agency") zugeschrieben wird. Handeln ist keine rein menschliche Fähigkeit, sondern ein Phänomen, das aus der Verbindung der Aktanten im Netzwerk entsteht.</p></div>
         </section>
         
         <section id="analysis">
-            <h1>Textanalyse: Akteur-Netzwerk-Theorie (ANT)</h1>
-            
-            <h2>Kernargumente</h2>
-            <div class="key-point">
-                <div class="key-point-number">1</div>
-                <div class="key-point-content">
-                    <p><strong>Generalisierte Symmetrie & Hybriden:</strong> Die ANT fordert, soziale und technische Faktoren als gleichwertig zu behandeln und nicht mehr nur soziale Faktoren als erklärende Variablen zu nutzen. Sie geht von einer unauflösbaren Vernetzung aus, deren Ergebnisse "Hybriden" sind – Mischformen aus Gesellschaft, Technik und Natur.</p>
-                </div>
+            <h1>Interaktive Textanalyse: Die ANT</h1>
+            <p>Lassen Sie uns die Kerngedanken der Akteur-Netzwerk-Theorie schrittweise erkunden. Klicken Sie auf die Karten, um die Details zu enthüllen.</p>
+            <div class="analysis-container">
+                <div class="analysis-card"><div class="card-face card-front"><h3>Symmetrie & Hybride</h3></div><div class="card-face card-back"><p>Die ANT fordert, soziale und technische Faktoren <strong>gleichwertig (symmetrisch)</strong> zu behandeln. Sie kritisiert die künstliche Trennung von Natur und Gesellschaft und betont, dass wir pausenlos <strong>Hybride</strong> erschaffen – untrennbare Mischformen aus Sozialem und Technischem.</p></div></div>
+                <div class="analysis-card"><div class="card-face card-front"><h3>Übersetzung (Translation)</h3></div><div class="card-face card-back"><p>Netzwerke entstehen durch <strong>"Übersetzung"</strong>. Hierbei werden die Ziele und Rollen verschiedener Aktanten (Menschen, Dinge, etc.) so neu definiert und aufeinander bezogen, dass sie sich zu einem stabilen Netzwerk verbinden können.</p></div></div>
+                <div class="analysis-card"><div class="card-face card-front"><h3>Blackboxing</h3></div><div class="card-face card-back"><p>Wenn ein Netzwerk so stabil funktioniert, dass seine innere Komplexität unsichtbar wird, spricht man von <strong>"Blackboxing"</strong>. Wir nehmen es nur noch als funktionierende Einheit wahr (z.B. "ein Auto"), nicht mehr als komplexes Zusammenspiel von Einzelteilen.</p></div></div>
+                <div class="analysis-card"><div class="card-face card-front"><h3>Verteilte Verantwortung</h3></div><div class="card-face card-back"><p>Da Handeln ein Netzwerkeffekt ist, ist auch die Verantwortung verteilt. Berühmtes Zitat von Latour: "Weder Menschen noch Waffen töten." Vielmehr entsteht die Tat im Netzwerk "Waffen-Bürger". Dies stellt klassische Schuldfragen infrage.</p></div></div>
             </div>
-            <div class="key-point">
-                <div class="key-point-number">2</div>
-                <div class="key-point-content">
-                    <p><strong>Der Prozess der "Übersetzung":</strong> Netzwerke entstehen durch "Übersetzung" (Translation). Dabei werden vormals unverbundene menschliche und nicht-menschliche "Aktanten" (z.B. Forscher, Fischer, aber auch Kammmuscheln oder technische Kollektoren) in ein Netzwerk eingeschrieben, um ein gemeinsames Ziel zu verfolgen.</p>
-                </div>
-            </div>
-            <div class="key-point">
-                <div class="key-point-number">3</div>
-                <div class="key-point-content">
-                    <p><strong>Handeln & Verantwortung im Netzwerk:</strong> Handlung ist laut ANT keine rein menschliche Fähigkeit, sondern eine Eigenschaft des gesamten Netzwerks. Verantwortung für eine Tat, z.B. einen Schuss, ist ebenfalls verteilt und entsteht erst im Verbund von "Bürger-Waffe" bzw. "Waffen-Bürger".</p>
-                </div>
-            </div>
-            
-            <h2>Methodischer Zugang</h2>
-            <p>Die ANT verfolgt einen relationalen Ansatz. Anstatt nach übergeordneten Strukturen zu suchen, folgt sie den "Aktanten" und beschreibt, wie diese durch Prozesse der "Übersetzung" Netzwerke knüpfen. Sie behandelt menschliche und nicht-menschliche Akteure symmetrisch, um zu verstehen, wie Stabilität (oder Instabilität) erzeugt wird. Das berühmte Beispiel der Kammmuschelzucht zeigt, wie Forscher, Fischer, die Muscheln selbst und technische Kollektoren zu einem Netzwerk assoziiert werden , das am Ende aber scheitert, weil die Akteure die ihnen zugedachten Rollen nicht spielen.</p>
-
-            <div class="quote">
-                <p>"Weder Menschen noch Waffen töten. Vielmehr muss die Verantwortung für ein Handeln unter den verschiedenen Akteuren verteilt werden."</p>
-                <p>– Bruno Latour (zitiert nach Häußling, 2014 )</p>
-            </div>
-
-            <h2>Theoretische Einordnung</h2>
-            <p>Die ANT ist ein konstruktivistischer Ansatz, der sich jedoch von klassischen soziologischen Ansätzen abgrenzt, indem er die Trennung von Natur und Gesellschaft überwindet. Sie postuliert, dass unsere moderne Welt von "Hybriden" durchzogen ist, was wir aber durch eine "Arbeit der Reinigung" (dem gedanklichen Trennen von Natur und Gesellschaft) systematisch verkennen. Indem sie die Rolle nicht-menschlicher Aktanten so stark betont, entwickelt sich die ANT von einer reinen Techniksoziologie zu einem gesellschaftstheoretischen Ansatz.</p>
         </section>
         
 <section id="examples">
-            <h1>Praktische Beispiele</h1>
-            
-            <div class="example">
-                <h3>Beispiel 1: Das gescheiterte Netzwerk der Kammmuscheln</h3>
-                <p>Michel Callons berühmtes Beispiel zeigt, wie fragil ein Netzwerk sein kann.  In der Bucht von St. Brieuc wollten Forscher die japanische Zuchtmethode für Kammmuscheln einführen, um die überfischten Bestände zu retten.  Dafür mussten sie ein Netzwerk aus verschiedenen Aktanten schmieden:</p>
- <img src="https://sharonmabel.github.io/RogerH-u-ling/3%20Probleme%20mit%20den%20Kammmuscheln.jpg" alt="Schaubild, das die drei Probleme des Kammmuschel-Projekts zeigt: ignorante Fischer, mangelnde Unterstützung durch Forscher und unkooperative Larven." style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; margin-bottom: 1rem;">
-                </div>
-                <p><strong>Das Netzwerk zerbrach</strong>, weil zwei entscheidende Aktantengruppen die ihnen zugedachte Rolle nicht spielten: Die Fischer konnten ihre kurzfristige Profitgier nicht zügeln und die Muschellarven siedelten sich nicht wie erwartet in den Kollektoren an. </p>
-            </div>
+    <h1>Beispiele aus der Theorie</h1>
+    <h2>Das Scheitern der Kammmuschel-Zucht: Eine ANT-Analyse</h2>
+    <div class="concept-box">
+        <p>Ein berühmtes Beispiel von Michel Callon illustriert, wie ein Netzwerk scheitert, wenn nicht alle Akteure – menschliche und nicht-menschliche – "mitspielen". Forscher versuchten, Kammmuscheln in der Bucht von Saint-Brieuc anzusiedeln. Das Projekt scheiterte aus drei wesentlichen Gründen. Klicke auf die Buttons, um die Probleme der jeweiligen Akteure aufzudecken.</p>
+    </div>
 
-            <div class="example">
-                <h3>Beispiel 2: Der Ritter als hybrider Akteur</h3>
-                <p>Nach der ANT ist ein Ritter nicht einfach nur ein Mensch. Vielmehr ist der "Ritter" ein <strong>hybrider Akteur</strong>, ein stabiles Netzwerk, dessen Handlungsfähigkeit erst durch das Zusammenspiel vieler verschiedener Aktanten entsteht:</p>
-                <ul>
-                    <li>Der <strong>menschliche Akteur</strong> (die Person des Adligen)</li>
-                    <li>Die <strong>technischen Aktanten</strong>: Schwert, Rüstung, Lanze </li>
-                    <li>Die <strong>natürlichen Aktanten</strong>: das trainierte Streitross </li>
-                    <li>Die <strong>menschlichen Unterstützer-Aktanten</strong>: der Knappe </li>
-                    <li>Der <strong>soziale Aktant</strong>: die gesellschaftlich zugesprochene Rolle als Ritter, die mit Rechten und Pflichten verbunden ist. </li>
-                </ul>
-                <p>Erst diese stabile Verknüpfung macht den Ritter zu dem, was er ist, und verleiht ihm seine Schlagkraft im Kampf.</p>
+    <div class="scallop-container">
+        <div class="scallop-problem">
+            <span class="scallop-icon">🎣</span>
+            <div class="scallop-text" id="problem1">
+                <p><strong>Die Fischer:</strong> Die lokalen Fischer akzeptierten die neuen Techniken nicht. Sie fühlten sich übergangen und entzogen dem Projekt die praktische Basis, indem sie ihre Rolle im Netzwerk nicht annahmen.</p>
             </div>
+        </div>
 
-            <div class="example">
-                <h3>Beispiel 3: Der Türschließer als moralischer Aktant</h3>
-                <p>Ein Türschließer ist ein klassisches ANT-Beispiel.  Anstatt einen Portier einzustellen oder ein Schild aufzuhängen, wird die "moralische" Aufgabe des Türschließens an technische Aktanten (Feder, Hydraulik) delegiert.  Diese schreiben den Nutzern ein bestimmtes Verhalten vor (Widerstand beim Öffnen akzeptieren), wodurch ein stabiles Netzwerk aus Mensch und Technik entsteht, das die Tür zuverlässig geschlossen hält.</p>
+        <div class="scallop-problem">
+            <span class="scallop-icon">🧑‍🔬</span>
+            <div class="scallop-text" id="problem2">
+                <p><strong>Die Forscherkollegen:</strong> Sie boten nicht genug langfristige Unterstützung und publizierten nicht positiv über das Projekt, wodurch es an Sichtbarkeit und Rückhalt in der Scientific Community verlor.</p>
             </div>
+        </div>
 
-            <div class="example">
-                <h3>Beispiel 4: Roboter im Amazon-Lager</h3>
-                <p>Ein Amazon-Lager ist ein perfektes Akteur-Netzwerk:</p>
-                <ul>
-                    <li><strong>Aktanten:</strong> Menschliche "Picker", Transportroboter, die Regale, die gescannten Produkte, die Software zur Routenplanung und der Zeit-Algorithmus sind allesamt Aktanten.</li>
-                    <li><strong>Übersetzung:</strong> Der Roboter übersetzt die Rolle des Menschen: Er ist nicht mehr derjenige, der durch Gänge läuft, sondern der an einer Station wartet. Die Software schreibt ihm ein bestimmtes Verhalten vor (Geschwindigkeit, Pausen).</li>
-                    <li><strong>Netzwerkeffekt:</strong> Effizienz ist hier kein menschliches oder technisches Merkmal, sondern ein Effekt des gesamten, stabilisierten Netzwerks. Fällt ein Aktant aus (Software-Bug, Roboter-Akku leer), bricht die Performanz des gesamten Netzwerks zusammen.</li>
-                </ul>
+        <div class="scallop-problem">
+            <span class="scallop-icon">🦪</span>
+            <div class="scallop-text" id="problem3">
+                <p><strong>Die Kammmuscheln:</strong> Die Larven selbst verweigerten die Kooperation. Sie siedelten sich nicht wie geplant in den technischen Kollektoren an und spielten so ihre Rolle als zentrale nicht-menschliche Akteure nicht.</p>
             </div>
-        </section>
+        </div>
+
+        <div class="reveal-buttons">
+            <button onclick="revealProblem(1)">Fischer</button>
+            <button onclick="revealProblem(2)">Forscher</button>
+            <button onclick="revealProblem(3)">Kammmuscheln</button>
+        </div>
+    </div>
+     <div class="example">
+        <h3>Beispiel 2: Der Ritter als hybrider Akteur</h3>
+        <p>Nach der ANT ist ein Ritter nicht einfach nur ein Mensch. Was gehört alles zum "Akteur Ritter", damit er seine Funktion erfüllen kann? Lassen Sie uns raten...</p>
+        <div style="margin-top: 1rem;">
+            <button class="toggle-button" data-target="#ritter-aufloesung">Auflösung anzeigen</button>
+        </div>
+        <div class="toggle-content" id="ritter-aufloesung">
+            <ul>
+                <li>Der <strong>menschliche Akteur</strong> (die Person des Adligen)</li>
+                <li>Die <strong>technischen Aktanten</strong>: Schwert, Rüstung, Lanze</li>
+                <li>Die <strong>natürlichen Aktanten</strong>: das trainierte Streitross</li>
+                <li>Die <strong>menschlichen Unterstützer-Aktanten</strong>: der Knappe</li>
+                <li>Der <strong>soziale Aktant</strong>: die gesellschaftlich zugesprochene Rolle als Ritter.</li>
+            </ul>
+            <p>Erst diese stabile Verknüpfung macht den Ritter zu dem, was er ist, und verleiht ihm seine Schlagkraft.</p>
+        </div>
+    </div>
+</section>
+
+
         
         <section id="discussion">
-            <h1>Kritische Diskussion</h1>
+            <h1>Diskussion & Perspektiven</h1>
+            <h2 class="toggle-heading" data-target="#strengths-content">Stärken des Ansatzes</h2>
+            <div class="toggle-content" id="strengths-content">
+                <ul>
+                    <li>Überwindung dualistischer Vorstellungen von Technik und Gesellschaft.</li>
+                    <li>Hohe Sensibilität für die aktive Rolle technischer Artefakte in sozialen Prozessen.</li>
+                    <li>Liefert ein starkes Vokabular (Übersetzung, Aktant, Netzwerk), um komplexe Entwicklungen zu beschreiben.</li>
+                    <li>Macht sichtbar, wie Moral und Verhalten in Technologien "eingeschrieben" werden.</li>
+                </ul>
+            </div>
             
-            <h2>Stärken des Ansatzes</h2>
-            <ul>
-                <li>Überwindung dualistischer Vorstellungen von Technik und Gesellschaft, indem die unauflösbare Vernetzung von Gesellschaft, Technik und Natur betont wird.</li>
-                <li>Hohe Sensibilität für die aktive Rolle technischer Artefakte in sozialen Prozessen; Technik wird nicht nur als passives Werkzeug gesehen.</li>
-                <li>Liefert ein starkes Vokabular (Übersetzung, Aktant, Netzwerk), um komplexe soziotechnische Entwicklungen detailliert zu beschreiben.</li>
-                <li>Macht sichtbar, wie Moral und Verhalten in Technologien "eingeschrieben" werden (z.B. der klobige Hotelschlüssel, der durch seine Sperrigkeit ein Eigeninteresse zur Abgabe erzeugt).</li>
-            </ul>
-            
-            <h2>Kritische Punkte</h2>
-            <ul>
-                <li>Die Auflösung von Verantwortung in einem Netzwerk ist moralisch und rechtlich problematisch: Wenn alle und alles beteiligt ist, wer ist dann am Ende haftbar? </li>
-                <li>Die ANT beschreibt sehr gut, *wie* Netzwerke entstehen, erklärt aber oft nicht ausreichend, warum sich bestimmte (z.B. profitorientierte) Netzwerke gegenüber anderen machtvoll durchsetzen.</li>
-                <li>Trotz guter theoretischer Argumente kann die Akzeptanz scheitern, da Menschen aus Angst vor dem Verlust von Arbeitsplätzen oder Autonomie die ihnen zugedachte Rolle im Netzwerk verweigern.</li>
-                <li>Vertrauensverlust kann die Bildung eines Netzwerks verhindern: Menschen misstrauen oft den "Promotoren" (Unternehmen, Politikern) und nehmen deren Argumente nicht an – egal wie stabil das geplante Netzwerk theoretisch ist.</li>
-            </ul>
-            
-            <h2>Diskussionsfragen</h2>
-            <ol>
-                <li>Ein LLM wie ChatGPT ist ein "Aktant". Wie "übersetzt" er die Rollen von Studierenden und Lehrenden im Netzwerk "Universität"? Welche neuen Netzwerke entstehen (z.B. Studierende-ChatGPT-Prüfungsamt)?</li>
-                <li>Wenn die Verantwortung im "Waffen-Bürger"-Netzwerk geteilt ist, wer trägt die Verantwortung für einen autonomen Kampfroboter, der eine Fehlentscheidung trifft? Der Programmierer, der Kommandant, der Roboter selbst?</li>
-                <li>Viele Menschen haben Angst vor KI. Welche der von Renn genannten Akzeptanz-Motive (z.B. mangelnde Beherrschbarkeit, Bedrohung der Arbeitstätigkeit) spielen hier die größte Rolle , und wie könnte Latours Idee eines "Parlaments der Dinge" helfen, dieses Misstrauen zu bearbeiten? </li>
-            </ol>
+            <h2 class="toggle-heading" data-target="#critique-content">Kritische Punkte & Grenzen</h2>
+            <div class="toggle-content" id="critique-content">
+                <ul>
+                    <li>Die Auflösung von Verantwortung in einem Netzwerk ist moralisch und rechtlich problematisch.</li>
+                    <li>Erklärt oft nicht ausreichend, warum sich bestimmte Netzwerke machtvoll durchsetzen.</li>
+                    <li>Menschliche Faktoren wie Emotionen oder Ängste werden tendenziell unterbewertet.</li>
+                </ul>
+            </div>
+
+            <h2>Diskussionsfragen am Beispiel von "Atlas"</h2>
+            <p>Sehen wir uns einen der fortschrittlichsten humanoiden Roboter an und stellen wir uns auf Grundlage der ANT einige Fragen:</p>
+            <div style="margin-top: 1rem;">
+                <button class="toggle-button" data-target="#discussion-questions">Diskussionsfragen anzeigen</button>
+            </div>
+            <div class="toggle-content" id="discussion-questions">
+                <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/I44_zbEwz_w?si=6FXZuks025ratI8t" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <ol>
+                    <li><strong>Wer handelt hier?</strong> Wenn wir Atlas sehen, wer ist der eigentliche "Akteur"? Der Roboter, die Software, die Ingenieure von Boston Dynamics oder das gesamte Netzwerk aus all diesen Teilen?</li>
+                    <li><strong>Wie wird Verhalten "übersetzt"?</strong> Schreibt der Roboter durch seine Fähigkeiten und sein menschenähnliches Aussehen uns, den Zuschauern, ein bestimmtes Verhalten vor (z.B. Vorsicht, Faszination, Angst)?</li>
+                    <li><strong>Wo liegt die Verantwortung?</strong> Wenn Atlas bei einer Aufgabe einen Fehler macht und einen Schaden verursacht – wo liegt die Verantwortung nach der Akteur-Netzwerk-Theorie? Lässt sie sich überhaupt noch sinnvoll zuweisen?</li>
+                </ol>
+            </div>
         </section>
     </main>
     
     <div class="controls">
         <button id="prev-section">Zurück</button>
         <button id="next-section">Weiter</button>
-        <button id="glossary-toggle">Glossar</button>
-        <button id="notes-toggle">Notizen</button>
     </div>
     
-    <div class="glossary-panel">
-        <h2>Techniksoziologisches Glossar</h2>
-        <span class="glossary-close">&times;</span>
-        <div class="glossary-item">
-            <div class="glossary-term">Aktant</div>
-            <p>Eine handelnde Entität in einem Netzwerk. Kann menschlich (z.B. ein Forscher) oder nicht-menschlich (z.B. eine Kammmuschel, ein Computer, eine Theorie) sein.</p>
-        </div>
-        <div class="glossary-item">
-            <div class="glossary-term">Akteur-Netzwerk-Theorie (ANT)</div>
-            <p>Ein Ansatz, der von Bruno Latour u.a. entwickelt wurde und die strikte Trennung zwischen menschlichen und nicht-menschlichen Akteuren aufhebt, um soziotechnische Netzwerke zu analysieren.</p>
-        </div>
-        <div class="glossary-item">
-            <div class="glossary-term">Übersetzung (Translation)</div>
-            <p>Der zentrale Prozess der Netzwerkbildung, bei dem Aktanten die Interessen und Rollen anderer Aktanten so umdefinieren, dass sie sich zu einem Netzwerk verknüpfen.</p>
-        </div>
-        <div class="glossary-item">
-            <div class="glossary-term">Hybrid</div>
-            <p>Eine Mischform aus Elementen, die üblicherweise getrennt werden, wie Natur, Gesellschaft und Technik (z.B. ein Cyborg, aber auch die globale Erwärmung).</p>
-        </div>
-        <div class="glossary-item">
-            <div class="glossary-term">Symmetrieprinzip</div>
-            <p>Die methodische Forderung, soziale und technische Faktoren bei der Analyse gleichwertig zu behandeln und nicht eine Seite von vornherein als Erklärung für die andere zu bevorzugen.</p>
-        </div>
-        <div class="glossary-item">
-            <div class="glossary-term">Blackboxing</div>
-            <p>Wenn ein Netzwerk aus vielen Aktanten so stabil wird, dass es nach außen wie eine einzige, funktionierende Einheit erscheint (z.B. ein Computer oder ein Auto). Die innere Komplexität wird unsichtbar gemacht.</p>
-        </div>
-    </div>
+    <div class="progress-bar"></div>
     
-    <div class="presenter-notes">
-        <h3>Präsentationsnotizen:</h3>
-        <p id="current-notes">Willkommen zur Präsentation über Techniksoziologie. Beginnen Sie mit einer kurzen Einführung in das Thema und die Relevanz des Textes.</p>
-    </div>
-    
-    <div class="progress-bar" style="width: 20%;"></div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('main > section');
-            const navLinks = document.querySelectorAll('nav a');
-            const prevButton = document.getElementById('prev-section');
-            const nextButton = document.getElementById('next-section');
-            const progressBar = document.querySelector('.progress-bar');
-            let currentSectionIndex = 0;
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('main > section');
+        const navLinks = document.querySelectorAll('nav a');
+        const progressBar = document.querySelector('.progress-bar');
+        let currentSectionIndex = 0;
 
-            function showSection(index) {
-                if (index < 0) index = 0;
-                if (index >= sections.length) index = sections.length - 1;
-
-                const targetSection = sections[index];
-                if (!targetSection) return;
-
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-
-                sections.forEach(section => section.classList.remove('visible'));
-                targetSection.classList.add('visible');
-
-                navLinks.forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('href') === `#${targetSection.id}`);
-                });
-                
-                currentSectionIndex = index;
-                updateProgressBar();
-                updatePresenterNotes();
-            }
-
-            function updateProgressBar() {
-                const progress = ((currentSectionIndex + 1) / sections.length) * 100;
-                progressBar.style.width = `${progress}%`;
-            }
-
-            navLinks.forEach((link, index) => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showSection(index);
-                });
+        function updateActiveState(index) {
+            currentSectionIndex = index;
+            navLinks.forEach((link, i) => {
+                link.classList.toggle('active', i === index);
             });
+            const progress = ((index + 1) / sections.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
 
-            prevButton.addEventListener('click', () => showSection(currentSectionIndex - 1));
-            nextButton.addEventListener('click', () => showSection(currentSectionIndex + 1));
+        function scrollToSection(index) {
+            if (index < 0 || index >= sections.length) return;
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
 
-            document.addEventListener('keydown', (e) => {
-                if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
-                if (e.key === 'ArrowRight' || e.key === ' ') {
-                    e.preventDefault();
-                    showSection(currentSectionIndex + 1);
-                } else if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    showSection(currentSectionIndex - 1);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targetIndex = Array.from(sections).findIndex(s => s.id === entry.target.id);
+                    updateActiveState(targetIndex);
                 }
             });
+        }, { rootMargin: "-40% 0px -60% 0px", threshold: 0.1 });
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const targetId = entry.target.id;
-                        const targetIndex = Array.from(sections).findIndex(s => s.id === targetId);
-                        
-                        if(targetIndex !== currentSectionIndex) {
-                           currentSectionIndex = targetIndex;
-                           navLinks.forEach(link => {
-                                link.classList.toggle('active', link.getAttribute('href') === `#${targetId}`);
-                           });
-                           updateProgressBar();
-                           updatePresenterNotes();
-                        }
-                    }
-                });
-            }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
+        sections.forEach(section => observer.observe(section));
 
-            sections.forEach(section => observer.observe(section));
-
-            // Glossary toggle
-            const glossaryToggle = document.getElementById('glossary-toggle');
-            const glossaryPanel = document.querySelector('.glossary-panel');
-            const glossaryClose = document.querySelector('.glossary-close');
-            glossaryToggle.addEventListener('click', () => glossaryPanel.classList.add('open'));
-            glossaryClose.addEventListener('click', () => glossaryPanel.classList.remove('open'));
-
-            // Presenter notes
-            const notesToggle = document.getElementById('notes-toggle');
-            const presenterNotes = document.querySelector('.presenter-notes');
-            notesToggle.addEventListener('click', () => presenterNotes.classList.toggle('show'));
-            
-            // Keyboard shortcuts for panels
-             document.addEventListener('keydown', (e) => {
-                if (e.key === 'g') glossaryPanel.classList.toggle('open');
-                if (e.key === 'n') presenterNotes.classList.toggle('show');
+        navLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                scrollToSection(index);
             });
-
-            showSection(0);
         });
-        
-        function showConcept(conceptId) {
-            const conceptBoxes = document.querySelectorAll('#concepts .concept-box');
-            conceptBoxes.forEach(box => box.style.display = 'none');
-            const targetBox = document.getElementById(`concept-${conceptId}`);
-            if (targetBox) targetBox.style.display = 'block';
 
-            const nodes = document.querySelectorAll('.concept-node');
-            nodes.forEach(node => {
-                node.style.transform = 'scale(1)';
-                if(node.getAttribute('onclick').includes(conceptId)) {
-                    node.style.transform = 'scale(1.1)';
+        document.getElementById('prev-section').addEventListener('click', () => scrollToSection(currentSectionIndex - 1));
+        document.getElementById('next-section').addEventListener('click', () => scrollToSection(currentSectionIndex + 1));
+        
+        document.querySelectorAll('.analysis-card').forEach(card => {
+            card.addEventListener('click', () => card.classList.toggle('is-flipped'));
+        });
+
+        document.querySelectorAll('.toggle-heading, .toggle-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const targetSelector = e.currentTarget.dataset.target;
+                const content = document.querySelector(targetSelector) || button.nextElementSibling;
+                button.classList.toggle('open');
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
                 }
             });
-        }
-        
-        function updatePresenterNotes() {
-            const notesContent = document.getElementById('current-notes');
-            const sectionId = document.querySelector('section.visible')?.id;
-            
-            let noteText = "";
-            switch(sectionId) {
-                case 'intro': noteText = "Stellen Sie kurz Roger Häußling vor und erläutern Sie die Grundlagen der Techniksoziologie. Betonen Sie die Bedeutung der relationalen Perspektive."; break;
-                case 'concepts': noteText = "Erklären Sie die Schlüsselkonzepte durch Klicken auf die Netzwerkknoten. Verbinden Sie diese Konzepte mit der Akteur-Netzwerk-Theorie."; break;
-                case 'analysis': noteText = "Präsentieren Sie die drei Kernargumente der ANT. Das Zitat von Latour zur geteilten Verantwortung ist ein guter Übergang zu den Beispielen und der Diskussion."; break;
-                case 'examples': noteText = "Die Beispiele dienen der Veranschaulichung der Theorie. Der Türschließer ist der Klassiker, die anderen Beispiele modern. Fragen Sie das Publikum nach weiteren Beispielen."; break;
-                case 'discussion': noteText = "Öffnen Sie die Diskussion. Die Stärken und Schwächen fassen die Theorie zusammen. Die Diskussionsfragen sind als Anregung für das Publikum gedacht."; break;
-                default: noteText = "Notizen für diesen Abschnitt werden ergänzt.";
+        });
+
+        // Die Funktionen global verfügbar machen
+        window.revealProblem = function(problemNumber) {
+            const problemText = document.getElementById(`problem${problemNumber}`);
+            if (problemText) {
+                problemText.classList.add('visible');
             }
-            notesContent.textContent = noteText;
-        }
-    </script>
+        };
+        
+        window.showConcept = function(conceptId) {
+            const allBoxes = document.querySelectorAll('#concepts .concept-box');
+            allBoxes.forEach(b => b.style.display = 'none');
+            const targetBox = document.getElementById(`concept-${conceptId}`);
+            if (targetBox) {
+                targetBox.style.display = 'block';
+            }
+        };
+    });
+</script>
 </body>
 </html>
